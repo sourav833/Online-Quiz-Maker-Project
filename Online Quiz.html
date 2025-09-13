@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Quiz Maker</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="container">
+    <h1>Online Quiz Maker</h1>
+    <nav id="nav">
+      <button data-nav="home">Home</button>
+      <button data-nav="quizzes">Browse Quizzes</button>
+      <button data-nav="create">Create Quiz</button>
+      <button data-nav="auth" id="authBtn">Login / Register</button>
+      <button data-nav="logout" id="logoutBtn" class="hidden">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Home -->
+    <section id="homeSection" class="card">
+      <h2>Welcome!</h2>
+      <p>Create quizzes, share them, and challenge your friends. Take quizzes
+         created by others and get your score instantly.</p>
+      <div class="cta-row">
+        <button class="primary" data-nav="create">Create a Quiz</button>
+        <button class="secondary" data-nav="quizzes">Take a Quiz</button>
+      </div>
+    </section>
+
+    <!-- Auth -->
+    <section id="authSection" class="card hidden">
+      <h2>Login / Register</h2>
+      <div class="auth-grid">
+        <form id="loginForm" class="card subtle">
+          <h3>Login</h3>
+          <label>Username
+            <input type="text" id="loginUsername" required />
+          </label>
+          <label>Password
+            <input type="password" id="loginPassword" required />
+          </label>
+          <button type="submit" class="primary">Login</button>
+        </form>
+
+        <form id="registerForm" class="card subtle">
+          <h3>Register</h3>
+          <label>Username
+            <input type="text" id="registerUsername" required />
+          </label>
+          <label>Password
+            <input type="password" id="registerPassword" required />
+          </label>
+          <button type="submit" class="secondary">Create Account</button>
+          <p class="muted small">For demo only. Accounts are stored in 
+            your browser (localStorage).</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Create Quiz -->
+    <section id="createSection" class="card hidden">
+      <h2>Create a New Quiz</h2>
+      <form id="quizMetaForm" class="grid-2">
+        <label>Quiz Title
+          <input type="text" id="quizTitle" placeholder="e.g., JavaScript
+           Basics" required />
+        </label>
+        <label>Description
+          <input type="text" id="quizDesc" placeholder="Short description" required />
+        </label>
+      </form>
+
+      <div id="questionsContainer"></div>
+
+      <div class="row">
+        <button id="addQuestionBtn" class="secondary">+ Add Question</button>
+        <button id="saveQuizBtn" class="primary">Save Quiz</button>
+      </div>
+
+      <p class="muted small">Tip: Each question must have 2–6 options and 
+        exactly one correct answer.</p>
+    </section>
+
+    <!-- Quiz Listing -->
+    <section id="listSection" class="card hidden">
+      <div class="list-header">
+        <h2>Available Quizzes</h2>
+        <input id="searchInput" type="search" placeholder="Search quizzes..." />
+      </div>
+      <div id="quizList" class="quiz-list"></div>
+    </section>
+
+    <!-- Take Quiz -->
+    <section id="takeSection" class="card hidden">
+      <div class="take-header">
+        <h2 id="takeTitle">Quiz</h2>
+        <span id="progressBadge" class="badge"></span>
+      </div>
+      <p id="takeDesc" class="muted"></p>
+
+      <div id="questionStage" class="question-stage">
+        <!-- dynamically injected -->
+      </div>
+
+      <div class="row">
+        <button id="prevQBtn" class="secondary">Previous</button>
+        <button id="nextQBtn" class="primary">Next</button>
+        <button id="submitQuizBtn" class="primary hidden">Submit Quiz</button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="resultSection" class="card hidden">
+      <h2>Results</h2>
+      <p id="scoreSummary"></p>
+      <div id="answerReview"></div>
+      <div class="row">
+        <button class="secondary" data-nav="quizzes">Back to Quizzes</button>
+        <button class="primary" data-nav="home">Home</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p class="muted small">© <span id="year"></span> Online Quiz Maker 
+      • Mobile responsive • Demo only (no server)</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

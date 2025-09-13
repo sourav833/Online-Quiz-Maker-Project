@@ -1,0 +1,155 @@
+:root{
+  --bg: #0b1020;                                                                                                                                                                                                                                                              
+  --card: #141a2d;
+  --text: #e7e9ee;
+  --muted: #a6adbb;
+  --primary: #6ea8fe;
+  --secondary: #9bdb60;
+  --danger: #ff6b6b;
+  --border: #253049;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 16px;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin:0; padding:0;
+  background: radial-gradient(1200px 600px at 10% -10%, #1b2240 0%,
+   transparent 60%), 
+              radial-gradient(1000px 800px at 120% 0%, #0e1637 0%,
+               transparent 50%),
+              var(--bg);
+  color:var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.container{
+  max-width: 1000px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+header.container{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+
+h1{ font-size: clamp(22px, 3vw, 32px); margin:0; }
+h2{ font-size: clamp(18px, 2.6vw, 26px); margin:0 0 12px; }
+h3{ margin: 0 0 8px; }
+
+p{ margin: 8px 0 12px; }
+.small{ font-size: .88rem; }
+.muted{ color: var(--muted); }
+.badge{
+  background: #223055; color: var(--primary);
+  padding: 4px 10px; border-radius: 999px; border:1px solid var(--border);
+  font-weight: 600;
+}
+
+/* ========= Cards & Layout ========= */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), 
+  rgba(255,255,255,0.0));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin: 14px 0;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+.card.subtle{
+  box-shadow: none;
+}
+
+.grid-2{
+  display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+}
+@media (max-width: 700px){
+  .grid-2{ grid-template-columns: 1fr; }
+}
+
+.row{ display:flex; gap:10px; flex-wrap: wrap; }
+.cta-row{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 8px; }
+
+/* ========= Inputs ========= */
+label{ display:block; font-weight:600; margin: 8px 0 4px; }
+input[type="text"], input[type="password"], input[type="search"]{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0c1228;
+  color: var(--text);
+  outline: none;
+}
+input:focus{ border-color: var(--primary); }
+
+/* ========= Buttons ========= */
+button{
+  border:1px solid var(--border);
+  background:#0f1733;
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:12px;
+  font-weight:700;
+  cursor:pointer;
+  transition: transform .06s ease, background .2s ease, border-color .2s;
+}
+button:hover{ transform: translateY(-1px); border-color:#3a4c79; }
+button.primary{ background: linear-gradient(180deg, #20366e, #182b57); }
+button.secondary{ background: linear-gradient(180deg, #2c5a22, #1a3b14); }
+button.danger{ background: linear-gradient(180deg, #7a1b1b, #531010); }
+button.hidden{ display:none; }
+
+/* ========= Auth ========= */
+.auth-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+@media (max-width: 800px){
+  .auth-grid{ grid-template-columns: 1fr; }
+}
+
+/* ========= Quiz Creation ========= */
+.qcard{
+  border: 1px dashed var(--border);
+  padding: 14px;
+  border-radius: 14px;
+  margin: 12px 0;
+  background: #0b1330;
+}
+.qhead{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.opt-row{ display:grid; grid-template-columns: 1fr auto; gap:8px; margin-bottom:6px; }
+.opt-controls{ display:flex; gap:6px; align-items:center; }
+.q-actions{ display:flex; gap:8px; flex-wrap: wrap; }
+
+/* ========= Quiz List ========= */
+.list-header{ display:flex; align-items:center; justify-content:space-between;
+   gap:12px; }
+.quiz-list{ display:grid; grid-template-columns: repeat( auto-fit, minmax(260px, 1fr)
+   ); gap:12px; }
+.quiz-item{
+  padding:14px; border:1px solid var(--border); border-radius:12px; 
+  background:#0c1535;
+}
+.quiz-item .meta{ font-size:.9rem; color: var(--muted); }
+
+/* ========= Take Quiz ========= */
+.question-stage{ margin: 10px 0; }
+.choice{
+  display:block; margin: 8px 0; padding: 10px 12px;
+  background:#0c1535; border:1px solid var(--border); border-radius:12px;
+}
+.choice input{ margin-right: 8px; }
+
+/* ========= Results ========= */
+.review-item{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px; margin:10px 0;
+}
+.correct{ border-color: #2a6d3a; background:#0e1f16; }
+.incorrect{ border-color: #6d2a2a; background:#1f0e0e; }
+
+footer.container{ text-align:center; color: var(--muted); }
